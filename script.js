@@ -1,30 +1,38 @@
 /* SELEZIONIAMO LE VARIABILI API*/
 const endPointApi = "https://flynn.boolean.careers/exercises/api/random/mail"
+const btn = document.querySelector(".button")
 
 console.log(endPointApi);
 
+const mailGenerate = []
+console.log(mailGenerate);
 
 /* OUTPUT */
 const stamp = document.querySelector(".boxList")
 
 
 
-        for (i = 0; i < 10; i++) {
-               /* Chiamata AJAX */
-            axios.get(endPointApi)
-            .then(rispApi => {
-                 /* Codice da eseguite in caso di successo */
-                const mailRandom = rispApi.data.response;
-                console.log(mailRandom)
-                stamp.innerHTML += `<li> ${mailRandom}</li>`        
+
+ btn.addEventListener("click", generatoreMail)
 
 
 
+/* funzioni */
+function generatoreMail() {
 
-                })
-            .catch(error => {
-            /* Codice da esewguire in caso di errore */
-                console.error(error)
-            })
+    for (i = 0; i < 10; i++) {
+                    /* Chiamata AJAX */
+                    axios.get(endPointApi)
+                    .then(rispApi => {
+                        /* Codice da eseguite in caso di successo */
+                        const mailRandom = rispApi.data.response;
+                        console.log(mailRandom)
+                        stamp.innerHTML += `<li> ${mailRandom}</li>`   
+                        })
+                    .catch(error => {
+                    /* Codice da esewguire in caso di errore */
+                        console.error(error)
+                        })
 
-        }
+    } 
+}
