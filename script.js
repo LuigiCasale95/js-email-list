@@ -4,8 +4,6 @@ const btn = document.querySelector(".button")
 
 console.log(endPointApi);
 
-const mailGenerate = []
-console.log(mailGenerate);
 
 /* OUTPUT */
 const stamp = document.querySelector(".boxList")
@@ -17,8 +15,12 @@ const stamp = document.querySelector(".boxList")
 
 
 
+
+
 /* funzioni */
 function generatoreMail() {
+/* svuoto la lista*/
+stamp.innerHTML = "";
 
     for (i = 0; i < 10; i++) {
                     /* Chiamata AJAX */
@@ -27,7 +29,8 @@ function generatoreMail() {
                         /* Codice da eseguite in caso di successo */
                         const mailRandom = rispApi.data.response;
                         console.log(mailRandom)
-                        stamp.innerHTML += `<li> ${mailRandom}</li>`   
+                        stamp.innerHTML += `<li> ${mailRandom}</li>`  
+
                         })
                     .catch(error => {
                     /* Codice da esewguire in caso di errore */
